@@ -1,17 +1,17 @@
-str = "Hello World"
-reverseStr = ""
-for i in range(len(str)):
-    if (str[i] == " " or i == (len(str)-1)):
-        tempIndex = i - 1
-        while (tempIndex >= 0 or str[tempIndex] == " " ):
-            
-            reverseStr = reverseStr + str[tempIndex]
-            # if (str[tempIndex] != " "):
-            tempIndex = tempIndex - 1
-            # print("adding :: ", reverseStr)
-            # print("str[tempIndex] ==  :: ", str[tempIndex] == " ")
-        if (i != (len(str)-1)):
-            reverseStr += " "
+str = "Romesh Kosme Hola"
 
-        # print("exit tempI :: ", tempIndex)
+strLen = len(str)
+reverseStr = ""
+
+for i in range(strLen):
+    if str[i] == " " or i == strLen-1:
+        x = i+1 if i == strLen-1 else i
+        while x > 0:
+            if str[x-1] != " ":
+                reverseStr += str[x-1]+" " if x-1 == 0 else str[x-1]
+                x = x-1
+            else:
+                reverseStr += " "
+                break
+        
 print(reverseStr)
