@@ -1,25 +1,19 @@
-const sort = (arr) => {
+((arr) => {
   for (let i = 0; i < arr.length; i++) {
-    const lastIndex = arr.length - i - 1
-    const maxNumIndex = getMaxNumIndex(arr, 0, lastIndex)
-    const temp = arr[maxNumIndex]
-    arr[maxNumIndex] = arr[lastIndex]
-    arr[lastIndex] = temp
+    let minimum = arr[i];
+    let j = i + 1;
+    let minIndex;
+    while (j < arr.length) {
+      if (minimum > arr[j]) {
+        minimum = arr[j];
+        minIndex = j;
+      }
+      j++;
+    }
+    if (!minIndex) break;
+    let temp = arr[i];
+    arr[i] = minimum;
+    arr[minIndex] = temp;
   }
-  return arr
-}
-
-const getMaxNumIndex = (arr, start, lastIndex) => {
-  let maxNumIndex = start
-  for (let i = start; i <= lastIndex; i++) {
-    maxNumIndex = arr[maxNumIndex] < arr[i] ? i : maxNumIndex
-  }
-  return maxNumIndex
-}
-
-const main = () => {
-  const sortedArr = sort([3,1,5,5,4])
-  console.log("sortedArr :: ", sortedArr)
-}
-
-main()
+  console.log(arr);
+})([5, 4, 3, 2, 1]);
