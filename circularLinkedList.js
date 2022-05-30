@@ -26,12 +26,9 @@ function CircularLinkedList() {
       }
     }
   };
-  // insert At
   this.insertAt = function (value, index) {
     const node = new Node(value);
     let current = this.head;
-    // if list is blank: DONE
-    // else
     if (!current) {
       this.head = node;
       this.head.next = this.head;
@@ -40,7 +37,7 @@ function CircularLinkedList() {
       if (index === 0) {
         do {
           current = current.next;
-        } while(current.next !== this.head)
+        } while (current.next !== this.head);
         current.next = node;
         node.next = this.head;
         this.head = node;
@@ -62,6 +59,28 @@ function CircularLinkedList() {
     }
   };
   // remove At
+  this.removeAt = function (index) {
+    let current = this.head;
+    if (index === 0) {
+      while (current.next !== this.head) {
+        current = current.next;
+      }
+      current.next = this.head.next;
+      this.head = current.next;
+      return;
+    }
+    let count = 0;
+    while (count < index) {
+      count++;
+      if (count === index) break;
+      current = current.next;
+    }
+    if (current.next !== this.head) {
+      current.next = current.next.next;
+    } else {
+      current.next = this.head;
+    }
+  };
   // list
   this.list = function () {
     let current = this.head;
@@ -79,8 +98,9 @@ function CircularLinkedList() {
   circularLinkedList.insert(20);
   circularLinkedList.insert(30);
   circularLinkedList.insert(40);
-  //   circularLinkedList.insert(50);
-  circularLinkedList.insertAt(45, 4);
+  circularLinkedList.insert(50);
+  // circularLinkedList.insertAt(45, 4);
+  circularLinkedList.removeAt(4);
   // circularLinkedList.insertAt(20, 1);
   circularLinkedList.list();
 })();
