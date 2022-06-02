@@ -14,16 +14,20 @@ function Stack() {
     NODE.next = this.head;
     this.head = NODE;
   };
-//   this.removeAt = function (index) {
-//     let current = this.head;
-//     let count = 0;
-//     while (count <= index) {
-//       if (count === index) break;
-//       count++;
-//       current = current.next;
-//     }
-//     console.log("remove - ", current.element);
-//   };
+  this.removeAt = function (index) {
+    let current = this.head;
+    if (index === 0) {
+      this.head = current.next ? current.next : null;
+      return;
+    }
+    let count = 0;
+    while (count < index) {
+      count++;
+      if (count === index) break;
+      current = current.next;
+    }
+    current.next = current.next.next ? current.next.next : null
+  };
   this.list = function () {
     let current = this.head;
     while (current) {
@@ -38,6 +42,6 @@ function Stack() {
   STACK.insert(1);
   STACK.insert(2);
   STACK.insert(3);
+  STACK.removeAt(2);
   STACK.list();
-//   STACK.removeAt(1);
 })();
