@@ -1,0 +1,11 @@
+function gcd(a, b) {
+	if (a === 0 || b === 0) {
+  	return a === 0 ? b : a;
+  }
+  const min = Math.min(a, b);
+  const max = Math.max(a, b);
+  
+  return gcd(max%min, min);
+}
+
+const res = gcd(0 , 1);
